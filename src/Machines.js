@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Machines.scss';
+import Health from './Health';
 
 class Machines extends Component {
 	constructor (props) {
@@ -30,7 +31,9 @@ class Machines extends Component {
 							<tr key={key}>
 								<td>{machine.name}</td>
 								<td>{machine.ip_address}</td>
-								<td>{machine.health}</td>
+								<td>
+									<Health value={machine.health} />
+								</td>
 							</tr>
 						)}
 					</tbody>
