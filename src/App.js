@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
 	BrowserRouter as Router,
 	Route,
@@ -7,28 +7,39 @@ import {
 } from 'react-router-dom';
 import Machines from './Machines';
 import './App.css';
+import { connect } from 'react-redux';
 
-function App () {
-	return (
-		<Router>
-			<div className='App'>
-				<header className='App-header'>
-					<img alt='logo' height='272' width='800' src='https://i.imgur.com/jcvsFKh.png' />
-				</header>
+class App extends Component {
+	constructor (props) {
+		super(props);
+	}
 
-				<nav className='App-nav'>
-					<Link to='/'>Home</Link>
-					<Link to='/machines'>Machines</Link>
-				</nav>
+	render () {
+		return (
+			<Router>
+				<div className='App'>
+					<header className='App-header'>
+						<img alt='logo' height='272' width='800' src='https://i.imgur.com/jcvsFKh.png' />
+					</header>
 
-				<Switch>
-					<Route path='/machines'>
-						<Machines />
-					</Route>
-				</Switch>
-			</div>
-		</Router>
-	);
+					<nav className='App-nav'>
+						<Link to='/'>Home</Link>
+						<Link to='/machines'>Machines</Link>
+					</nav>
+
+					<Switch>
+						<Route path='/machines'>
+							<Machines />
+						</Route>
+					</Switch>
+				</div>
+			</Router>
+		);
+	}
 }
 
-export default App;
+const mapStateToProps = (state, ownProps) => {
+	return {};
+};
+
+export default connect(mapStateToProps)(App);
