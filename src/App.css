@@ -38,7 +38,7 @@ a:hover {
 	margin: 0 auto;
 	height: 100%;
 	background-color: white;
-	max-width: 944px;
+	width: 960px;
 }
 
 .App-header {
