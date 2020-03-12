@@ -17,10 +17,24 @@ class Machine extends Component {
 	}
 
 	render () {
-		console.log(this.props.machine);
 		return (
 			<div className='machine'>
-				Machine view
+				<div className='machine__col'>
+					<h1>{this.props.machine.name}</h1>
+					<h2>Update Device</h2>
+					<form>
+						<label htmlFor="name">Name:</label>
+						<input className="machine__name-input" type="text" id="name" placeholder={this.props.machine.name} autoComplete="off" />
+						<input className="machine__submit" type="submit" />
+					</form>
+				</div>
+				<div className='machine__col'>
+					<div className='machine__helath-conainer'>
+						<Health value={this.props.machine.health} showValue={true} />
+					</div>
+					<h2>Stats</h2>
+					IP Address: {this.props.machine.ip_address}
+				</div>
 			</div>
 		);
 	}

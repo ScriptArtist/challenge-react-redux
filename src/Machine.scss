@@ -1,3 +1,38 @@
 .machine {
+	display: flex;
 
+	&__col {
+		flex-basis: 50%;
+
+		& + & {
+			padding-left: 20px;
+		}
+	}
+
+	&__helath-conainer {
+		border: 1px solid #696969;
+		background-color: #dddddd;
+		padding: 15px;
+	}
+
+	&__name-input {
+		width: 100%;
+		box-sizing: border-box;
+		margin-top: 5px;
+		font-size: 1em;
+		border: 1px solid #696969;
+		padding: 5px;
+		border-radius: 3px;
+	}
+
+	&__submit {
+		float: right;
+		margin-top: 8px;
+		background-color: #f15825;
+		color: white;
+		font-weight: bold;
+		border-radius: 5px;
+		padding: 5px 18px;
+		font-size: 0.9em;
+	}
 }
