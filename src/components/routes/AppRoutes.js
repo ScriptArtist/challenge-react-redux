@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
-import Machine from './Machine';
-import Machines from './Machines';
+import Machine from './machine/Machine';
+import Machines from './machines/Machines';
 import {connect} from 'react-redux';
-import {getMachines} from './actions/machines';
+import {getMachines} from '../../store/machines/actions';
 
 class AppRoutes extends Component {
 	constructor (props) {

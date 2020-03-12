@@ -1,4 +1,4 @@
-import {environment} from "../environments";
+import {environment} from "../../environments";
 
 export const getMachines = () => dispatch => {
 	return fetch(`${environment.apiUrl}/machines`, {method: 'GET'})

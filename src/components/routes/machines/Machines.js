@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Machines.scss';
-import Health from './Health';
 import {Link} from 'react-router-dom';
+import Health from "../../health/Health";
 
 class Machines extends Component {
 	constructor (props) {
