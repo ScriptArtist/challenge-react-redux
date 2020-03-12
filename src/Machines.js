@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './Machines.scss';
 import Health from './Health';
+import {Link} from 'react-router-dom';
 
 class Machines extends Component {
 	constructor (props) {
@@ -29,7 +30,7 @@ class Machines extends Component {
 					<tbody>
 						{this.props.machines.map((machine, key) =>
 							<tr key={key}>
-								<td>{machine.name}</td>
+								<td><Link to={`/machines/${machine.id}`}>{machine.name}</Link></td>
 								<td>{machine.ip_address}</td>
 								<td>
 									<Health value={machine.health} />
