@@ -1,52 +1,20 @@
 import React, { Component } from 'react';
-import {
-	BrowserRouter as Router,
-	Route,
-	Switch,
-	Link
-} from 'react-router-dom';
-import Machines from './Machines';
-import Machine from './Machine';
-import './App.css';
 import {Provider} from 'react-redux';
-import {createStore} from 'redux';
+import {applyMiddleware, createStore} from 'redux';
+import {composeWithDevTools} from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
+import AppRoutes from './AppRoutes';
 import reducer from './reducers';
-import { createBrowserHistory } from 'history';
+import './App.css';
 
-class App extends Component {
-	constructor (props) {
-		super(props);
-		this.history = createBrowserHistory();
-		this.store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-	}
+let store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
-	render () {
-		return (
-			<Provider store={this.store}>
-				<Router>
-					<div className='App'>
-						<header className='App-header'>
-							<img alt='logo' height='272' width='800' src='https://i.imgur.com/jcvsFKh.png' />
-						</header>
-
-						<nav className='App-nav'>
-							<Link to='/'>Home</Link>
-							<Link to='/machines'>Machines</Link>
-						</nav>
-
-						<Switch>
-							<Route path='/machines/:id'>
-								<Machine />
-							</Route>
-							<Route path='/machines/'>
-								<Machines />
-							</Route>
-						</Switch>
-					</div>
-				</Router>
-			</Provider>
-		);
-	}
+function App () {
+	return (
+		<Provider store={store}>
+			<AppRoutes />
+		</Provider>
+	);
 }
 
 export default App;
