@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {Provider} from 'react-redux';
 import {applyMiddleware, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';

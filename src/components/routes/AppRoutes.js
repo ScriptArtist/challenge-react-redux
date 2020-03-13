@@ -4,12 +4,10 @@ import {BrowserRouter as Router, Link, Route, Switch} from 'react-router-dom';
 import Machine from './machine/Machine';
 import Machines from './machines/Machines';
 import {connect} from 'react-redux';
-import {getMachines} from '../../store/machines/actions';
 
 class AppRoutes extends Component {
 	constructor (props) {
 		super(props);
-		props.onGetMachines();
 	}
 
 	static get propTypes () {
@@ -48,9 +46,5 @@ class AppRoutes extends Component {
 export default connect((state, ownProps) => {
 	return {};
 }, dispatch => {
-	return {
-		onGetMachines: () => {
-			dispatch(getMachines());
-		}
-	};
+	return {};
 })(AppRoutes);
