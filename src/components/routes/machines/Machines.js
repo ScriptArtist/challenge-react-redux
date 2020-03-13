@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './Machines.scss';
 import {Link} from 'react-router-dom';
 import Health from '../../health/Health';
-import {getMachines} from '../../../store/machines/actions';
+import {fetchMachines} from '../../../store/machines/machinesActions';
+import {getMachines} from '../../../store/machines/machinesSelectors';
 
 class Machines extends Component {
 	constructor (props) {
@@ -13,7 +14,8 @@ class Machines extends Component {
 
 	static get propTypes () {
 		return {
-			machines: PropTypes.object,
+			machines: PropTypes.array,
+			loading: PropTypes.bool,
 			onGetMachines: PropTypes.func
 		};
 	}
@@ -24,18 +26,18 @@ class Machines extends Component {
 
 	render () {
 		return (
-			(!this.props.machines.loading) ?
+			(!this.props.loading) ?
 				<div className='machines'>
 					<table className='machines__table'>
 						<thead>
 							<tr>
 								<th>Name</th>
 								<th>IP Address</th>
-								<th>Health</th>
+								<th width={'25%'}>Health</th>
 							</tr>
 						</thead>
 						<tbody>
-							{this.props.machines.data.map((machine, key) =>
+							{this.props.machines.map((machine, key) =>
 								<tr key={key}>
 									<td><Link to={`/machines/${machine.id}`}>{machine.name}</Link></td>
 									<td>{machine.ip_address}</td>
@@ -55,14 +57,15 @@ class Machines extends Component {
 
 function mapStateToProps (state) {
 	return {
-		machines: state.machines
+		machines: getMachines(state),
+		loading: state.machines.loading
 	};
 }
 
 function mapDispatchToProps (dispatch) {
 	return {
 		onGetMachines: () => {
-			dispatch(getMachines());
+			dispatch(fetchMachines());
 		}
 	};
 }

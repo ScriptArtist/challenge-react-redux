@@ -1,6 +1,6 @@
 import {environment} from '../../environments';
 
-export const getMachines = () => dispatch => {
+export const fetchMachines = () => dispatch => {
 	dispatch({ type: 'FETCH_MACHINES' });
 	return fetch(`${environment.apiUrl}/machines`, {method: 'GET'})
 		.then(response => response.json())
@@ -9,7 +9,7 @@ export const getMachines = () => dispatch => {
 		});
 };
 
-export const getMachine = (id) => dispatch => {
+export const fetchMachine = (id) => dispatch => {
 	dispatch({ type: 'FETCH_MACHINE' });
 	return fetch(`${environment.apiUrl}/machines/${id}`, {method: 'GET'})
 		.then(response => response.json())

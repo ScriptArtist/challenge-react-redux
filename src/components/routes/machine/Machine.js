@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './Machine.scss';
 import {withRouter} from 'react-router';
 import Health from '../../health/Health';
-import {getMachine, updateMachine} from '../../../store/machines/actions';
+import {fetchMachine, updateMachine} from '../../../store/machines/machinesActions';
+import {getMachine} from '../../../store/machines/machinesSelectors';
 
 class Machine extends Component {
 	constructor (props) {
@@ -19,7 +20,7 @@ class Machine extends Component {
 		return {
 			machineId: PropTypes.string,
 			machine: PropTypes.object,
-			machines: PropTypes.object,
+			loading: PropTypes.bool,
 			onGetMachine: PropTypes.func,
 			onUpdateMachine: PropTypes.func
 		};
@@ -42,7 +43,7 @@ class Machine extends Component {
 
 	render () {
 		return (
-			(!this.props.machines.loading && typeof this.props.machine === 'object') ?
+			(!this.props.loading && typeof this.props.machine === 'object') ?
 				<div className='machine'>
 					<div className='machine__col'>
 						<h1>{this.props.machine.name}</h1>
@@ -80,15 +81,15 @@ function mapStateToProps (state, ownProps) {
 
 	return {
 		machineId: id,
-		machines: state.machines,
-		machine: state.machines.data.find((machine) => machine.id === id)
+		machine: getMachine(state, id),
+		loading: state.machines.loading
 	};
 }
 
 function mapDispatchToProps (dispatch) {
 	return {
 		onGetMachine: (id) => {
-			dispatch(getMachine(id));
+			dispatch(fetchMachine(id));
 		},
 		onUpdateMachine: (id, updateProps) => {
 			dispatch(updateMachine(id, updateProps));

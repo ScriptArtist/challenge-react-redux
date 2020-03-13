@@ -8,6 +8,7 @@
 
 	&__progress-bar-indicator {
 		background: #5cb85c;
+		transition: width 0.5s;
 
 		&_green {
 			background: #5cb85c;

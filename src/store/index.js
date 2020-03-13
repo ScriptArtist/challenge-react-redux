@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import machines from './machines/reducer';
+import machines from './machines/machinesReducer';
 
 export default combineReducers({
 	machines
