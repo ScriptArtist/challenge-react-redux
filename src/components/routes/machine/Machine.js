@@ -6,6 +6,7 @@ import {withRouter} from 'react-router';
 import Health from '../../health/Health';
 import {fetchMachine, updateMachine} from '../../../store/machines/machinesActions';
 import {getMachine} from '../../../store/machines/machinesSelectors';
+import Spinner from '../../spinner/spinner';
 
 class Machine extends Component {
 	constructor (props) {
@@ -71,7 +72,7 @@ class Machine extends Component {
 					</div>
 				</div>
 				:
-				<div>loading...</div>
+				<Spinner />
 		);
 	}
 }

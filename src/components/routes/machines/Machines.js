@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import Health from '../../health/Health';
 import {fetchMachines} from '../../../store/machines/machinesActions';
 import {getMachines} from '../../../store/machines/machinesSelectors';
+import Spinner from '../../spinner/spinner';
 
 class Machines extends Component {
 	constructor (props) {
@@ -50,7 +51,7 @@ class Machines extends Component {
 					</table>
 				</div>
 				:
-				<div>Loading...</div>
+				<Spinner />
 		);
 	}
 }

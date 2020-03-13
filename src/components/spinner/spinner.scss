@@ -1,0 +1,11 @@
+.spinner {
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	opacity: 0;
+	transition: opacity 0.75s cubic-bezier(1,0,0.1,0);
+
+	&_show {
+		opacity: 1;
+	}
+}
