@@ -5,7 +5,7 @@ import Machine from './machine/Machine';
 import Machines from './machines/Machines';
 import {connect} from 'react-redux';
 
-class AppRoutes extends Component {
+export class AppRoutes extends Component {
 	constructor (props) {
 		super(props);
 	}

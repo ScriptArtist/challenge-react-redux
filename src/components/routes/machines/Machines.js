@@ -8,7 +8,7 @@ import {fetchMachines} from '../../../store/machines/machinesActions';
 import {getMachines} from '../../../store/machines/machinesSelectors';
 import Spinner from '../../spinner/spinner';
 
-class Machines extends Component {
+export class Machines extends Component {
 	constructor (props) {
 		super(props);
 	}

@@ -8,7 +8,7 @@ import {fetchMachine, updateMachine} from '../../../store/machines/machinesActio
 import {getMachine} from '../../../store/machines/machinesSelectors';
 import Spinner from '../../spinner/spinner';
 
-class Machine extends Component {
+export class Machine extends Component {
 	constructor (props) {
 		super(props);
 
@@ -47,9 +47,9 @@ class Machine extends Component {
 			(!this.props.loading && typeof this.props.machine === 'object') ?
 				<div className='machine'>
 					<div className='machine__col'>
-						<h1>{this.props.machine.name}</h1>
+						<h1 className="machine__title">{this.props.machine.name}</h1>
 						<h2>Update Device</h2>
-						<form onSubmit={this.handleSubmit.bind(this)}>
+						<form className="machine__form" onSubmit={this.handleSubmit.bind(this)}>
 							<label htmlFor="nameValue">Name:</label>
 							<input className="machine__name-input"
 								id="nameValue"
