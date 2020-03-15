@@ -1,4 +1,6 @@
 import machinesReducer from "./machinesReducer";
+import { DEFAULT_PREFIX, WEBSOCKET_MESSAGE } from '@giantmachines/redux-websocket';
+import * as types from './machinesTypes';
 
 describe('Machine Reducer', () => {
 	let initialState = {
@@ -26,19 +28,19 @@ describe('Machine Reducer', () => {
 		}];
 
 	test('list of machines should updates', () => {
-		let newMachinesState = machinesReducer(undefined, {type: 'FETCH_MACHINES_SUCCESS', payload: machines});
+		let newMachinesState = machinesReducer(undefined, {type: types.FETCH_MACHINES_SUCCESS, payload: machines});
 		expect(Object.keys(newMachinesState.data).length).toBe(3);
 	});
 
 	test('fetch machine should return machine object', () => {
-		let newMachineState = machinesReducer(undefined, {type: 'FETCH_MACHINE_SUCCESS', payload: machines[0]});
+		let newMachineState = machinesReducer(undefined, {type: types.FETCH_MACHINE_SUCCESS, payload: machines[0]});
 		expect(Object.keys(newMachineState.data).length).toBe(1);
 	});
 
 	test('health update message should update health of machine', () => {
 		let message = {message: '{"type": "HEALTH_UPDATE", "id": "90fa-2caaaef88648-4111947a-6c58-4977", "health": 38}'};
-		let state = machinesReducer(undefined, {type: 'FETCH_MACHINES_SUCCESS', payload: machines});
-		state = machinesReducer(state, {type: 'REDUX_WEBSOCKET::MESSAGE', payload: message});
+		let state = machinesReducer(undefined, {type: types.FETCH_MACHINES_SUCCESS, payload: machines});
+		state = machinesReducer(state, {type: `${DEFAULT_PREFIX}::${WEBSOCKET_MESSAGE}`, payload: message});
 		expect(state.data['90fa-2caaaef88648-4111947a-6c58-4977'].health).toBe(38);
 	});
 });

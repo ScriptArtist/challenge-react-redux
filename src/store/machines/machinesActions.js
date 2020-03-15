@@ -1,25 +1,26 @@
 import {environment} from '../../environments';
+import * as types from './machinesTypes';
 
 export const fetchMachines = () => dispatch => {
-	dispatch({ type: 'FETCH_MACHINES' });
+	dispatch({ type: types.FETCH_MACHINES });
 	return fetch(`${environment.apiUrl}/machines`, {method: 'GET'})
 		.then(response => response.json())
 		.then((data) => {
-			dispatch({ type: 'FETCH_MACHINES_SUCCESS', payload: data });
+			dispatch({ type: types.FETCH_MACHINES_SUCCESS, payload: data });
 		});
 };
 
 export const fetchMachine = (id) => dispatch => {
-	dispatch({ type: 'FETCH_MACHINE' });
+	dispatch({ type: types.FETCH_MACHINE });
 	return fetch(`${environment.apiUrl}/machines/${id}`, {method: 'GET'})
 		.then(response => response.json())
 		.then((data) => {
-			dispatch({ type: 'FETCH_MACHINE_SUCCESS', payload: data });
+			dispatch({ type: types.FETCH_MACHINE_SUCCESS, payload: data });
 		});
 };
 
 export const updateMachine = (id, updateProps) => dispatch => {
-	dispatch({ type: 'FETCH_MACHINE' });
+	dispatch({ type: types.FETCH_MACHINE });
 	return fetch(`${environment.apiUrl}/machines/${id}`,
 		{method: 'PUT',
 			headers: {'Content-Type': 'application/json'},
@@ -27,6 +28,6 @@ export const updateMachine = (id, updateProps) => dispatch => {
 		})
 		.then(response => response.json())
 		.then((data) => {
-			dispatch({ type: 'FETCH_MACHINE_SUCCESS', payload: data });
+			dispatch({ type: types.FETCH_MACHINE_SUCCESS, payload: data });
 		});
 };

@@ -3,6 +3,7 @@ import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import configureMockStore from 'redux-mock-store';
 import {environment} from '../../environments';
+import * as types from './machinesTypes';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
@@ -32,8 +33,8 @@ describe('Machine Actions', () => {
 
 		const store = mockStore({loading: false, data: {}});
 		const expectedActions = [
-			{ type: 'FETCH_MACHINES' },
-			{ type: 'FETCH_MACHINES_SUCCESS', payload: machinesList }
+			{ type: types.FETCH_MACHINES },
+			{ type: types.FETCH_MACHINES_SUCCESS, payload: machinesList }
 		];
 
 		await store.dispatch(fetchMachines());
@@ -49,8 +50,8 @@ describe('Machine Actions', () => {
 
 		const store = mockStore({loading: false, data: {}});
 		const expectedActions = [
-			{ type: 'FETCH_MACHINE' },
-			{ type: 'FETCH_MACHINE_SUCCESS', payload: machinesList[0] }
+			{ type: types.FETCH_MACHINE },
+			{ type: types.FETCH_MACHINE_SUCCESS, payload: machinesList[0] }
 		];
 
 		await store.dispatch(fetchMachine(0));
@@ -66,8 +67,8 @@ describe('Machine Actions', () => {
 
 		const store = mockStore({loading: false, data: {}});
 		const expectedActions = [
-			{ type: 'FETCH_MACHINE' },
-			{ type: 'FETCH_MACHINE_SUCCESS', payload: machinesList[0] }
+			{ type: types.FETCH_MACHINE },
+			{ type: types.FETCH_MACHINE_SUCCESS, payload: machinesList[0] }
 		];
 
 		await store.dispatch(updateMachine(0, {name: "Test Name"}));
