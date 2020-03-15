@@ -2,10 +2,10 @@
 	&__table {
 		width: 100%;
 		border-collapse: collapse;
-
-		tbody {
-			border: solid 1px #696969;
-		}
+		box-shadow: 0 0 0px 1px #b7b7b7,
+					0 0 5px 0 #b7b7b7;
+		border-radius: 10px;
+		overflow: hidden;
 
 		th {
 			text-align: left;
@@ -16,7 +16,7 @@
 			padding: 10px 20px;
 		}
 
-		tr:nth-child(2n) {
+		tbody tr:nth-child(2n - 1) {
 			background: #efefef;
 		}
 	}

@@ -9,10 +9,12 @@
 		}
 	}
 
-	&__helath-conainer {
-		border: 1px solid #696969;
+	&__health-conainer {
+		border: 1px solid #bfbfbf;
 		background-color: #dddddd;
 		padding: 15px;
+		border-radius: 10px;
+		box-shadow: 0 0 5px 0 #b7b7b7;
 	}
 
 	&__name-input {
@@ -20,9 +22,10 @@
 		box-sizing: border-box;
 		margin-top: 5px;
 		font-size: 1em;
-		border: 1px solid #696969;
-		padding: 5px;
-		border-radius: 3px;
+		border: 1px solid #969696;
+		padding: 7px;
+		border-radius: 10px;
+		box-shadow: 0 0 5px 0 #b7b7b7;
 	}
 
 	&__submit {

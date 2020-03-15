@@ -64,7 +64,7 @@ export class Machine extends Component {
 						</form>
 					</div>
 					<div className='machine__col'>
-						<div className='machine__helath-conainer'>
+						<div className='machine__health-conainer'>
 							<Health value={Number(this.props.machine.health)} showValue={true} />
 						</div>
 						<h2>Stats</h2>

@@ -2,8 +2,11 @@
 	&__progress-bar {
 		height: 25px;
 		background: #ffffff;
-		border: solid 1px #696969;
+		border: solid 1px #b7b7b7;
 		display: flex;
+		border-radius: 10px;
+		box-shadow: inset 0 0 5px 0 #b7b7b7;
+		overflow: hidden;
 	}
 
 	&__progress-bar-indicator {
